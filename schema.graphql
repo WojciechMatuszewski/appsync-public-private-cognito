@@ -1,0 +1,15 @@
+type Query {
+  # The authenticated IAM role does not have explicit permission for this Query, thus I also have to add the @aws_cognito_user_pools directive.
+  posts: [Post]! @aws_iam @aws_cognito_user_pools
+}
+
+type Mutation {
+  # Since the APIs default authentication mechanism is the USER_POOL, if there are no directives it means the `@aws_cognito_user_pools` directive will be used here implicitly.
+  post(content: String!): Post!
+}
+
+# Same situation as above. A neat thing is that AppSync allows us to have permission for doing the operation and actually reading the results, like here.
+type Post @aws_iam @aws_cognito_user_pools {
+  id: ID!
+  content: String!
+}

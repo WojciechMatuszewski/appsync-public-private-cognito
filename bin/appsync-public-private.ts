@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import "source-map-support/register";
 import * as cdk from "@aws-cdk/core";
-import { CdkBoilerplateStack } from "../lib/cdk-boilerplate-stack";
+import { AppSyncPublicPrivateStack } from "../lib/appsync-public-private-stack";
 
 const app = new cdk.App();
-new CdkBoilerplateStack(app, "CdkBoilerplateStack", {
+new AppSyncPublicPrivateStack(app, "AppSyncPublicPrivate", {
   env: { region: "eu-central-1" }
 });
